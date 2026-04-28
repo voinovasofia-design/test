@@ -2,6 +2,8 @@ const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 const scoreEl = document.getElementById('score');
 const livesEl = document.getElementById('lives');
+const menuEl = document.getElementById('main-menu');
+const startBtn = document.getElementById('start-game');
 
 const WORLD_WIDTH = 3400;
 const GRAVITY = 0.62;
@@ -18,6 +20,7 @@ const game = {
   lives: 3,
   gameOver: false,
   victory: false,
+  started: false,
 };
 
 const player = {
@@ -285,7 +288,7 @@ function drawBackground(cameraX) {
 }
 
 function drawOverlay() {
-  if (!game.gameOver && !game.victory) return;
+  if (!game.started || (!game.gameOver && !game.victory)) return;
 
   ctx.fillStyle = 'rgb(0 0 0 / 70%)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -310,7 +313,7 @@ function render(time) {
 }
 
 function gameLoop(time) {
-  if (!game.gameOver && !game.victory) {
+  if (game.started && !game.gameOver && !game.victory) {
     updatePlayer();
     updateCoins();
     updateEnemies();
@@ -321,9 +324,20 @@ function gameLoop(time) {
   requestAnimationFrame(gameLoop);
 }
 
+function startGame() {
+  game.started = true;
+  menuEl.hidden = true;
+  resetLevel(true);
+}
+
 function bindEvents() {
   window.addEventListener('keydown', (event) => {
     const key = event.key.toLowerCase();
+
+    if (!game.started && key === 'enter') {
+      startGame();
+      return;
+    }
 
     if (key === 'arrowleft' || key === 'a') keys.left = true;
     if (key === 'arrowright' || key === 'd') keys.right = true;
@@ -348,6 +362,7 @@ function bindEvents() {
   });
 }
 
+startBtn.addEventListener('click', startGame);
 bindEvents();
 updateHud();
 requestAnimationFrame(gameLoop);
