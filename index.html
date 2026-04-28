@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Plumber: HTML5 Platformer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Pixel Plumber</h1>
+      <p class="subtitle">A Mario-style HTML5 platformer built with Canvas.</p>
+      <div class="hud" id="hud">
+        <span id="score">Score: 0</span>
+        <span id="lives">Lives: 3</span>
+        <span id="world">World 1-1</span>
+      </div>
+      <canvas id="game" width="960" height="540" aria-label="Pixel Plumber game"></canvas>
+      <p class="controls">
+        Move: <kbd>←</kbd><kbd>→</kbd> or <kbd>A</kbd><kbd>D</kbd> · Jump: <kbd>Space</kbd>/<kbd>↑</kbd>/<kbd>W</kbd> · Restart: <kbd>R</kbd>
+      </p>
+    </main>
+    <script src="game.js" defer></script>
+  </body>
+</html>
