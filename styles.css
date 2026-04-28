@@ -1,0 +1,69 @@
+:root {
+  color-scheme: dark;
+  --bg: #0d1321;
+  --panel: #1d2d44;
+  --accent: #fcbf49;
+  --text: #f0ebd8;
+  --danger: #ff595e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #3e5c76 0%, var(--bg) 55%);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+main {
+  width: min(100%, 980px);
+  display: grid;
+  gap: 0.75rem;
+}
+
+h1 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.subtitle,
+.controls {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: color-mix(in oklab, var(--panel) 85%, black);
+  border: 2px solid color-mix(in oklab, var(--accent) 75%, white);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  font-weight: 600;
+}
+
+canvas {
+  width: 100%;
+  max-width: 960px;
+  border-radius: 10px;
+  border: 3px solid #ffd166;
+  box-shadow: 0 12px 24px rgb(0 0 0 / 45%);
+  image-rendering: pixelated;
+  background: linear-gradient(#7dc8ff 0%, #7dc8ff 70%, #7c4e2f 70%, #7c4e2f 100%);
+}
+
+kbd {
+  background: #0007;
+  border: 1px solid #fff5;
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+}
